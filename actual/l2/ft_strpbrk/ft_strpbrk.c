@@ -1,19 +1,30 @@
-char	*ft_strpbrk(const char *s1, const char *s2)
+int	ft_strchr(char *str, int c)
 {
-	int	j;
+	int	i;
 
-	while (*s1)
+	i = 0;
+	while (str[i])
 	{
-		j = 0;
-		while(s2[j])
-		{
-			if (*s1 == s2[j])
-			{
-				return ((char *)s1);
-			}
-			j++;
-		}
-		s1++;
+		if (str[i] == c)
+			return (1);
+		i++;
 	}
 	return (0);
 }
+
+char	*ft_strpbrk(const char *s1, const char *s2)
+{
+	char	*s1c;
+	char	*s2c;
+
+	s1c = (char *)s1;
+	s2c = (char *)s2;
+	while (*s1c)
+	{
+		if (ft_strchr(s2c, *s1c))
+			return (s1c);
+		s1c++;
+	}
+	return (s1c);
+}
+
